@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jai Academy - Competitive Exam Coaching</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066cc;
+            --secondary: #ff8800;
+            --dark: #1a1a1a;
+            --light: #f5f5f5;
+            --white: #ffffff;
+            --text: #333333;
+            --border: #e0e0e0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: var(--light);
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0, 102, 204, 0.1);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #25d366, #128c7e);
+            color: white;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        /* Page Container */
+        .page {
+            display: none;
+            margin-top: 60px;
+            min-height: 90vh;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.75) 0%, rgba(255, 136, 0, 0.75) 100%), url('./hero-bg.jpg') center/cover;
+            background-attachment: fixed;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.5) 0%, rgba(255, 136, 0, 0.5) 100%);
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: white;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: white;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-img {
+            width: 300px;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            margin: 2rem auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Section Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 2rem;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            margin: 1rem auto;
+            border-radius: 2px;
+        }
+
+        section p {
+            text-align: center;
+            color: var(--text);
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 40px rgba(0, 102, 204, 0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .card-content {
+            color: var(--text);
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 1rem 0;
+            padding: 1rem 0;
+            border-top: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            font-weight: 600;
+        }
+
+        /* Buttons */
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), #0052a3);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 102, 204, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            animation: fadeIn 0.3s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: var(--white);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            width: 90%;
+            max-width: 700px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-close {
+            float: right;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--text);
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--primary);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h2 {
+            text-align: left;
+            margin: 0;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-body {
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .modal-body p {
+            text-align: left;
+            margin-bottom: 1rem;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        /* FAQ */
+        .faq-container {
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+
+        .faq-item {
+            background: var(--white);
+            margin-bottom: 1rem;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--dark);
+            transition: all 0.3s;
+            background: var(--white);
+        }
+
+        .faq-question:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .faq-toggle {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+            color: var(--primary);
+        }
+
+        .faq-item.active .faq-toggle {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 1rem 1.5rem;
+            border-top: 2px solid var(--border);
+        }
+
+        .faq-answer p {
+            color: var(--text);
+            text-align: left;
+            margin: 0;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 800px;
+            margin: 2rem auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 0.8rem;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Page Links */
+        .page-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 12px;
+            margin: 3rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-links a {
+            padding: 0.6rem 1.2rem;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .page-links a:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .page-links a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        /* Contact Info */
+        .contact-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 2rem auto;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: center;
+        }
+
+        .contact-item h3 {
+            margin: 0 0 0.3rem 0;
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            min-width: 50px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 3rem 1rem;
+            }
+
+            .page-links {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">JAI ACADEMY</div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')">Home</a></li>
+                <li><a onclick="showPage('about')">About</a></li>
+                <li><a onclick="showPage('courses')">Courses</a></li>
+                <li><a onclick="showPage('teachers')">Teachers</a></li>
+                <li><a onclick="showPage('success')">Success Stories</a></li>
+                <li><a onclick="showPage('pricing')">Pricing</a></li>
+                <li><a onclick="showPage('faq')">FAQ</a></li>
+                <li><a onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <a href="https://wa.me/917015084928" class="whatsapp-btn" target="_blank">
+                💬 WhatsApp
+            </a>
+        </div>
+    </nav>
+
+    <!-- HOME PAGE -->
+    <div id="home" class="page active">
+        <div class="hero">
+            <h1>Excel in Competitive Exams</h1>
+            <p>Master Mathematics with Expert Guidance at Jai Academy</p>
+            <div class="hero-img">📚</div>
+            <button class="btn btn-primary" onclick="showPage('courses')">Explore Courses</button>
+        </div>
+        <section class="container">
+            <h2>About Jai Academy</h2>
+            <p>Excellence in competitive exam preparation with experienced faculty and proven success rate</p>
+            <div style="background: white; padding: 2rem; border-radius: 12px; line-height: 1.8; max-width: 800px; margin: 0 auto; text-align: left; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);">
+                <p>Jai Academy is a premier coaching center in Sonipat dedicated to helping students crack competitive exams. With over 5 years of experience, we've helped hundreds of students achieve their dreams through our expert faculty, proven methodology, and personalized attention.</p>
+                <p>Our commitment to excellence and student success has made us the preferred choice for competitive exam preparation in the region. We believe in nurturing not just exam-ready students, but confident individuals prepared for life's challenges.</p>
+            </div>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('about')">About Us</a>
+            <a onclick="showPage('courses')">Courses</a>
+            <a onclick="showPage('teachers')">Meet Our Faculty</a>
+            <a onclick="showPage('success')">Success Stories</a>
+            <a onclick="showPage('pricing')">Pricing</a>
+            <a onclick="showPage('faq')">FAQ</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- ABOUT PAGE -->
+    <div id="about" class="page">
+        <section class="container">
+            <h2>About Jai Academy</h2>
+            <p>Learn more about our institution and mission</p>
+            
+            <div style="background: white; padding: 3rem; border-radius: 12px; box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08); text-align: left; line-height: 1.8;">
+                <h3 style="color: var(--dark); margin-bottom: 1rem;">Who We Are</h3>
+                <p>Jai Academy is a leading competitive exam coaching center located in Sonipat, Haryana. We specialize in providing high-quality education in Mathematics and related subjects for students preparing for competitive examinations.</p>
+
+                <h3 style="color: var(--dark); margin: 2rem 0 1rem 0;">Our Mission</h3>
+                <p>Our mission is to empower students with knowledge, skills, and confidence needed to excel in competitive exams. We are committed to providing personalized guidance and creating an environment where every student can thrive.</p>
+
+                <h3 style="color: var(--dark); margin: 2rem 0 1rem 0;">Why Choose Us</h3>
+                <p>✓ Experienced faculty with 5+ years of teaching experience<br>
+                ✓ Proven success rate with 1000+ successful students<br>
+                ✓ Personalized attention and small batch sizes<br>
+                ✓ Comprehensive study materials and mock tests<br>
+                ✓ Flexible timings and multiple batches<br>
+                ✓ Affordable fees without compromising quality</p>
+
+                <h3 style="color: var(--dark); margin: 2rem 0 1rem 0;">Facilities</h3>
+                <p>• Spacious, well-equipped classrooms<br>
+                • High-speed internet and smart boards<br>
+                • Comprehensive library with study materials<br>
+                • Comfortable seating arrangements<br>
+                • Hygienic drinking water and washrooms<br>
+                • Friendly and supportive environment</p>
+            </div>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('courses')">Courses</a>
+            <a onclick="showPage('teachers')">Teachers</a>
+            <a onclick="showPage('success')">Success Stories</a>
+            <a onclick="showPage('pricing')">Pricing</a>
+            <a onclick="showPage('faq')">FAQ</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- COURSES PAGE -->
+    <div id="courses" class="page">
+        <section class="container">
+            <h2>Our Courses</h2>
+            <p>Comprehensive preparation for competitive exams</p>
+            
+            <div class="grid">
+                <!-- Course 1: Math Mastery -->
+                <div class="card">
+                    <div class="card-image">📐</div>
+                    <h3>Mathematics Mastery</h3>
+                    <p class="card-content">Complete mathematical concepts and problem-solving techniques for competitive exams. Master algebra, geometry, and advanced problem-solving methods.</p>
+                    <div class="card-meta">
+                        <span>6 Months</span>
+                        <span>₹8,000</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openCourseModal('Mathematics Mastery', '6 months', '₹8,000', 'H. Balyan', 'Expert in quantitative aptitude', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Complete understanding of mathematical concepts, Advanced problem-solving techniques, 500+ practice questions, 20+ mock tests')">Know More</button>
+                </div>
+
+                <!-- Course 2: Science Essentials -->
+                <div class="card">
+                    <div class="card-image">🔬</div>
+                    <h3>Physics Fundamentals</h3>
+                    <p class="card-content">Core physics concepts with practical applications. Understand mechanics, thermodynamics, and modern physics for competitive exams.</p>
+                    <div class="card-meta">
+                        <span>6 Months</span>
+                        <span>₹10,000</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openCourseModal('Physics Fundamentals', '6 months', '₹10,000', 'Expert Faculty', 'Specialized in physics teaching', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Classical mechanics mastery, Thermodynamics concepts, Modern physics understanding, Numerical problem-solving')">Know More</button>
+                </div>
+
+                <!-- Course 3: Chemistry -->
+                <div class="card">
+                    <div class="card-image">⚗️</div>
+                    <h3>Chemistry Mastery</h3>
+                    <p class="card-content">Organic, inorganic, and physical chemistry expertise. Master the principles and reactions essential for competitive success.</p>
+                    <div class="card-meta">
+                        <span>6 Months</span>
+                        <span>₹10,000</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openCourseModal('Chemistry Mastery', '6 months', '₹10,000', 'Expert Faculty', 'Chemistry specialist', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Organic chemistry reactions, Inorganic compounds, Physical chemistry concepts, Equilibrium and redox reactions')">Know More</button>
+                </div>
+
+                <!-- Course 4: Biology -->
+                <div class="card">
+                    <div class="card-image">🧬</div>
+                    <h3>Biology Excellence</h3>
+                    <p class="card-content">Botany and zoology with exam-focused strategies. Understand biological processes and ace competitive biology exams.</p>
+                    <div class="card-meta">
+                        <span>6 Months</span>
+                        <span>₹10,000</span>
+                    </div>
+                    <button class="btn btn-primary" onclick="openCourseModal('Biology Excellence', '6 months', '₹10,000', 'Expert Faculty', 'Biology specialist', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Cell biology and genetics, Plant and animal physiology, Ecology and evolution, Human body systems')">Know More</button>
+                </div>
+            </div>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('teachers')">Teachers</a>
+            <a onclick="showPage('success')">Success Stories</a>
+            <a onclick="showPage('pricing')">Pricing</a>
+            <a onclick="showPage('faq')">FAQ</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- TEACHERS PAGE -->
+    <div id="teachers" class="page">
+        <section class="container">
+            <h2>Meet Our Faculty</h2>
+            <p>Expert educators dedicated to your success</p>
+            
+            <div class="grid">
+                <!-- Teacher 1 -->
+                <div class="card">
+                    <div class="card-image">👨‍🏫</div>
+                    <h3>H. Balyan</h3>
+                    <p class="card-content"><strong>📐 Mathematics</strong></p>
+                    <p class="card-content">Expert in quantitative aptitude with 5+ years of dedicated teaching experience. H. Balyan specializes in problem-solving techniques and conceptual clarity.</p>
+                    <button class="btn btn-primary" onclick="openTeacherModal('H. Balyan', '📐 Mathematics', '👨‍🏫', 'B.Tech in Mathematics<br>M.Sc Advanced Mathematics<br><br>Experience: 5+ years<br>Specialization: Quantitative Aptitude<br>Achievements: 2000+ successful students<br>Teaching Style: Interactive, concept-based learning with practical problem-solving approach')">Know More</button>
+                </div>
+
+                <!-- Teacher 2 -->
+                <div class="card">
+                    <div class="card-image">👩‍🏫</div>
+                    <h3>Neha Sharma</h3>
+                    <p class="card-content"><strong>🧠 Reasoning & Logic</strong></p>
+                    <p class="card-content">Specializes in logical reasoning and analytical skills. Neha brings 3+ years of expertise in making complex concepts simple and understandable.</p>
+                    <button class="btn btn-primary" onclick="openTeacherModal('Neha Sharma', '🧠 Reasoning & Logic', '👩‍🏫', 'M.Sc Physics from IIT Delhi<br>B.Sc Mathematics Honors<br><br>Experience: 3+ years<br>Specialization: Logical Reasoning, Puzzles<br>Achievements: 1500+ successful students<br>Teaching Style: Engaging, innovative techniques with focus on time management')">Know More</button>
+                </div>
+            </div>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('courses')">Courses</a>
+            <a onclick="showPage('success')">Success Stories</a>
+            <a onclick="showPage('pricing')">Pricing</a>
+            <a onclick="showPage('faq')">FAQ</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- SUCCESS STORIES PAGE -->
+    <div id="success" class="page">
+        <section class="container">
+            <h2>Student Success Stories</h2>
+            <p>Real achievements from our students</p>
+            
+            <div class="grid">
+                <!-- Student 1 -->
+                <div class="card">
+                    <div class="card-image">🏆</div>
+                    <h3>Rohan Kumar</h3>
+                    <p class="card-content"><strong>SSC CGL - AIR 45</strong></p>
+                    <p class="card-content">"Amazing teaching methods and personalized attention from the faculty. The structured approach and regular mock tests helped me achieve this rank!"</p>
+                    <button class="btn btn-primary" onclick="openStudentModal('Rohan Kumar', '🏆', 'SSC CGL - AIR 45', '98/100', '👨‍🎓', 'Daily Study Routine:<br>5:00 AM - 7:00 AM: Classes<br>7:00 AM - 9:00 AM: Self-study & practice<br>4:00 PM - 6:00 PM: Classes<br>6:00 PM - 8:00 PM: Mock tests & revision<br><br>Parents Support:<br>Continuous encouragement and support throughout the preparation journey. His parents ensured a stress-free environment at home.<br><br>Success Tips:<br>Regular mock tests were the key. Taking 20+ full-length tests helped me improve speed and accuracy significantly.')">Know More</button>
+                </div>
+
+                <!-- Student 2 -->
+                <div class="card">
+                    <div class="card-image">⭐</div>
+                    <h3>Priya Singh</h3>
+                    <p class="card-content"><strong>SBI PO - Selected</strong></p>
+                    <p class="card-content">"Worth every penny! The faculty's dedication and the systematic approach made my preparation smooth and effective. Highly recommended!"</p>
+                    <button class="btn btn-primary" onclick="openStudentModal('Priya Singh', '⭐', 'SBI PO - Selected', '96/100', '👩‍🎓', 'Daily Study Routine:<br>5:30 AM - 7:00 AM: Concept building<br>7:00 AM - 8:30 AM: Practice questions<br>4:00 PM - 6:00 PM: Advanced topics<br>6:00 PM - 8:00 PM: Mock tests & analysis<br><br>Parents Support:<br>Her parents provided emotional support and maintained a positive home environment. Regular motivation sessions kept her focused.<br><br>Success Tips:<br>Consistency was my strength. I never missed a single class and maintained a study journal to track my progress. Regular feedback from teachers helped me improve weak areas.')">Know More</button>
+                </div>
+
+                <!-- Student 3 -->
+                <div class="card">
+                    <div class="card-image">🎯</div>
+                    <h3>Amit Patel</h3>
+                    <p class="card-content"><strong>Bank Clerk - Selected</strong></p>
+                    <p class="card-content">"The personalized approach and regular feedback sessions made all the difference. I improved from average to excellent in just 4 months!"</p>
+                    <button class="btn btn-primary" onclick="openStudentModal('Amit Patel', '🎯', 'Bank Clerk - Selected', '94/100', '👨‍🎓', 'Daily Study Routine:<br>Early morning: 5:00 AM - 6:30 AM: Weak area practice<br>Evening: 4:00 PM - 6:00 PM: Regular classes<br>Night: 6:00 PM - 7:30 PM: Mock tests & revision<br><br>Parents Support:<br>Family support was crucial. His parents ensured minimal distractions and provided healthy meals for sustained focus.<br><br>Success Tips:<br>I focused on understanding concepts rather than memorizing. The one-on-one doubt sessions with teachers were extremely helpful. Practicing previous year papers strengthened my confidence.')">Know More</button>
+                </div>
+
+                <!-- Student 4 -->
+                <div class="card">
+                    <div class="card-image">💎</div>
+                    <h3>Anjali Verma</h3>
+                    <p class="card-content"><strong>Railway Exam - AIR 78</strong></p>
+                    <p class="card-content">"Excellent faculty who understand student psychology. The supportive environment and structured syllabus made my journey smooth and rewarding."</p>
+                    <button class="btn btn-primary" onclick="openStudentModal('Anjali Verma', '💎', 'Railway Exam - AIR 78', '92/100', '👩‍🎓', 'Daily Study Routine:<br>5:30 AM - 7:00 AM: New concepts & theory<br>7:30 AM - 9:00 AM: Problem-solving practice<br>4:00 PM - 6:00 PM: Subject-wise focus<br>6:00 PM - 8:00 PM: Full-length tests & analysis<br><br>Parents Support:<br>Her parents were very supportive and created a healthy study environment. Regular motivation and appreciation boosted her confidence.<br><br>Success Tips:<br>I maintained a success journal noting daily achievements. Group discussions with batch mates helped clarify concepts. Regular interaction with faculty provided timely guidance and corrections.')">Know More</button>
+                </div>
+
+                <!-- Student 5 -->
+                <div class="card">
+                    <div class="card-image">🌟</div>
+                    <h3>Vikram Singh</h3>
+                    <p class="card-content"><strong>SSC CGL - AIR 62</strong></p>
+                    <p class="card-content">"The methodical approach and regular assessment tools helped me identify and overcome my weaknesses. A truly transformative experience!"</p>
+                    <button class="btn btn-primary" onclick="openStudentModal('Vikram Singh', '🌟', 'SSC CGL - AIR 62', '90/100', '👨‍🎓', 'Daily Study Routine:<br>5:00 AM - 6:30 AM: Speed building exercises<br>7:00 AM - 8:30 AM: Accuracy practice<br>4:00 PM - 6:00 PM: Regular batch classes<br>6:00 PM - 8:30 PM: Detailed mock test analysis<br><br>Parents Support:<br>Supportive family environment with consistent encouragement. His parents celebrated small achievements which kept motivation high.<br><br>Success Tips:<br>I followed the 80/20 rule - focusing on high-weightage topics first. Regular revision schedules ensured nothing was forgotten. The performance tracking system helped me set realistic goals.')">Know More</button>
+                </div>
+            </div>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('courses')">Courses</a>
+            <a onclick="showPage('teachers')">Teachers</a>
+            <a onclick="showPage('pricing')">Pricing</a>
+            <a onclick="showPage('faq')">FAQ</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- PRICING PAGE -->
+    <div id="pricing" class="page">
+        <section class="container">
+            <h2>Course Pricing</h2>
+            <p>Affordable, quality education for all competitive exam aspirants</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>📐 Mathematics</h3>
+                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <p><strong>Teacher:</strong> H. Balyan</p>
+                        <p><strong>Time Slots:</strong></p>
+                        <p>• Morning: 5:00 AM - 7:00 AM</p>
+                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                </div>
+
+                <div class="card">
+                    <h3>🧪 Physics</h3>
+                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <p><strong>Teacher:</strong> Expert Faculty</p>
+                        <p><strong>Time Slots:</strong></p>
+                        <p>• Morning: 5:00 AM - 7:00 AM</p>
+                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                </div>
+
+                <div class="card">
+                    <h3>⚗️ Chemistry</h3>
+                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <p><strong>Teacher:</strong> Expert Faculty</p>
+                        <p><strong>Time Slots:</strong></p>
+                        <p>• Morning: 5:00 AM - 7:00 AM</p>
+                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                </div>
+
+                <div class="card">
+                    <h3>🧬 Biology</h3>
+                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                        <p><strong>Teacher:</strong> Expert Faculty</p>
+                        <p><strong>Time Slots:</strong></p>
+                        <p>• Morning: 5:00 AM - 7:00 AM</p>
+                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                </div>
+            </div>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('courses')">Courses</a>
+            <a onclick="showPage('teachers')">Teachers</a>
+            <a onclick="showPage('success')">Success Stories</a>
+            <a onclick="showPage('faq')">FAQ</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- FAQ PAGE -->
+    <div id="faq" class="page">
+        <section class="container">
+            <h2>Frequently Asked Questions</h2>
+            <p>Get answers to common questions about our courses and services</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is the duration of your courses?
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our standard courses are 6 months long with 3-4 classes per week. Each class is 2 hours long. We also offer accelerated 3-month intensive programs for advanced students. The schedule is flexible with both morning (5:00-7:00 AM) and evening (4:00-6:00 PM) batches available.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Can I join mid-course?
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, absolutely! You can join anytime during the course. We provide recorded lectures for all the topics covered before your joining date. Additionally, we conduct special one-on-one doubt-solving sessions to help you catch up with the batch quickly.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What if I miss a class?
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>All our classes are recorded and uploaded to our online portal within 24 hours. You can access these recordings anytime and watch them at your own pace. We also conduct additional revision sessions for students who need extra help with specific topics.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Are online classes available?
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, we offer offline classes in Sonipat for better interaction and practical problem-solving. However, we're expanding our services and plan to introduce live online classes very soon. Students can register for our mailing list to get updates about online classes when they launch.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is your refund policy?
+                        <span class="faq-toggle">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a 10% refund if you withdraw within 7 days of enrollment, provided you haven't attended more than 1 class. After 7 days, fees are non-refundable but can be transferred to family members or credited toward future courses. For specific cases, please contact our management directly.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('courses')">Courses</a>
+            <a onclick="showPage('teachers')">Teachers</a>
+            <a onclick="showPage('success')">Success Stories</a>
+            <a onclick="showPage('pricing')">Pricing</a>
+            <a onclick="showPage('contact')">Contact</a>
+        </div>
+    </div>
+
+    <!-- CONTACT PAGE -->
+    <div id="contact" class="page">
+        <section class="container">
+            <h2>Get In Touch</h2>
+            <p>Have questions? We'd love to help. Contact us anytime!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div>
+                        <h3>Phone</h3>
+                        <p><a href="tel:7015084928" style="color: var(--primary); text-decoration: none; font-weight: 600;">7015084928</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">💬</div>
+                    <div>
+                        <h3>WhatsApp</h3>
+                        <p><a href="https://wa.me/917015084928" style="color: var(--primary); text-decoration: none; font-weight: 600;" target="_blank">Chat with us on WhatsApp</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div>
+                        <h3>Email</h3>
+                        <p><a href="mailto:hbalyan03@gmail.com" style="color: var(--primary); text-decoration: none; font-weight: 600;">hbalyan03@gmail.com</a></p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div>
+                        <h3>Location</h3>
+                        <p>Sonipat, Haryana</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 1rem;">Send us a Message</h3>
+            <form class="contact-form" onsubmit="handleContactForm(event)">
+                <div class="form-group">
+                    <label>Name *</label>
+                    <input type="text" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" required placeholder="Your phone number">
+                </div>
+                <div class="form-group">
+                    <label>Subject *</label>
+                    <input type="text" required placeholder="What is this about?">
+                </div>
+                <div class="form-group">
+                    <label>Message *</label>
+                    <textarea required placeholder="Your message here..."></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+            </form>
+
+            <h3 style="text-align: center; margin-top: 3rem; margin-bottom: 1rem;">Find Us</h3>
+            <iframe width="100%" height="300" style="border-radius: 12px; margin-top: 2rem;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3430.1234567890!2d77.0189!3d29.0200!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSonipat%2C%20Haryana!5e0!3m2!1sen!2sin!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+        </section>
+        <div class="page-links container">
+            <a onclick="showPage('home')">Home</a>
+            <a onclick="showPage('about')">About</a>
+            <a onclick="showPage('courses')">Courses</a>
+            <a onclick="showPage('teachers')">Teachers</a>
+            <a onclick="showPage('success')">Success Stories</a>
+            <a onclick="showPage('pricing')">Pricing</a>
+            <a onclick="showPage('faq')">FAQ</a>
+        </div>
+    </div>
+
+    <!-- MODALS -->
+    <!-- Course Modal -->
+    <div id="courseModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="document.getElementById('courseModal').style.display='none'">&times;</span>
+            <div class="modal-header">
+                <h2 id="courseModalTitle"></h2>
+            </div>
+            <div class="modal-body" id="courseModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Teacher Modal -->
+    <div id="teacherModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="document.getElementById('teacherModal').style.display='none'">&times;</span>
+            <div class="modal-image" id="teacherModalImage"></div>
+            <div class="modal-header">
+                <h2 id="teacherModalTitle"></h2>
+                <p id="teacherModalSubject" style="margin: 0;"></p>
+            </div>
+            <div class="modal-body" id="teacherModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Student Modal -->
+    <div id="studentModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="document.getElementById('studentModal').style.display='none'">&times;</span>
+            <div class="modal-image" id="studentModalImage"></div>
+            <div class="modal-header">
+                <h2 id="studentModalTitle"></h2>
+                <p id="studentModalAchievement" style="margin: 0; color: var(--secondary); font-weight: 600;"></p>
+            </div>
+            <div class="modal-body" id="studentModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Enrollment Form Modal -->
+    <div id="enrollForm" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="document.getElementById('enrollForm').style.display='none'">&times;</span>
+            <div class="modal-header">
+                <h2>Enroll Now</h2>
+            </div>
+            <form onsubmit="handleEnrollment(event)" class="contact-form">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" required placeholder="Your full name">
+                </div>
+                <div class="form-group">
+                    <label>Email *</label>
+                    <input type="email" required placeholder="your@email.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone *</label>
+                    <input type="tel" required placeholder="10-digit mobile number">
+                </div>
+                <div class="form-group">
+                    <label>Select Course *</label>
+                    <select required style="padding: 0.8rem; border: 2px solid var(--border); border-radius: 6px; font-family: inherit;">
+                        <option value="">-- Select a course --</option>
+                        <option value="math">Mathematics Mastery (₹10,000)</option>
+                        <option value="physics">Physics Fundamentals (₹10,000)</option>
+                        <option value="chemistry">Chemistry Mastery (₹10,000)</option>
+                        <option value="biology">Biology Excellence (₹10,000)</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Complete Enrollment</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h3>Jai Academy</h3>
+        <p>Excellence in Competitive Exam Preparation</p>
+        <p>&copy; 2024 Jai Academy. All rights reserved.</p>
+        <p>📞 7015084928 | 📧 hbalyan03@gmail.com | 📍 Sonipat, Haryana</p>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        // Course Modal
+        function openCourseModal(title, duration, price, teacher, desc, timing, highlights) {
+            document.getElementById('courseModalTitle').textContent = title;
+            document.getElementById('courseModalBody').innerHTML = `
+                <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
+                    <p><strong>Duration:</strong> ${duration}</p>
+                    <p><strong>Price:</strong> ${price}</p>
+                    <p><strong>Teacher:</strong> ${teacher}</p>
+                    <p><strong>Description:</strong> ${desc}</p>
+                </div>
+                <h3>Class Timings</h3>
+                <p>${timing}</p>
+                <h3>What You'll Learn</h3>
+                <p>${highlights}</p>
+            `;
+            document.getElementById('courseModal').style.display = 'block';
+        }
+
+        // Teacher Modal
+        function openTeacherModal(name, subject, emoji, details) {
+            document.getElementById('teacherModalTitle').textContent = name;
+            document.getElementById('teacherModalSubject').textContent = subject;
+            document.getElementById('teacherModalImage').textContent = emoji;
+            document.getElementById('teacherModalBody').innerHTML = `<p>${details}</p>`;
+            document.getElementById('teacherModal').style.display = 'block';
+        }
+
+        // Student Modal
+        function openStudentModal(name, emoji, achievement, marks, studentEmoji, details) {
+            document.getElementById('studentModalTitle').textContent = name;
+            document.getElementById('studentModalAchievement').textContent = achievement;
+            document.getElementById('studentModalImage').innerHTML = `${emoji} <br> ${studentEmoji}`;
+            document.getElementById('studentModalBody').innerHTML = `
+                <p><strong>Marks Obtained:</strong> ${marks}</p>
+                <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0; line-height: 2;">
+                    ${details}
+                </div>
+            `;
+            document.getElementById('studentModal').style.display = 'block';
+        }
+
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            element.parentElement.classList.toggle('active');
+        }
+
+        // Form Handlers
+        function handleContactForm(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon at the provided phone number.');
+            e.target.reset();
+        }
+
+        function handleEnrollment(e) {
+            e.preventDefault();
+            alert('Thank you for enrolling! We will contact you soon to confirm your enrollment and discuss batch details.');
+            document.getElementById('enrollForm').style.display = 'none';
+            e.target.reset();
+        }
+
+        // Close modals on outside click
+        window.onclick = function(e) {
+            if (e.target.classList.contains('modal')) {
+                e.target.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>
