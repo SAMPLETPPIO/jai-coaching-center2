@@ -663,7 +663,7 @@
         <div class="hero">
             <h1>Excel in Competitive Exams</h1>
             <p>Master Mathematics with Expert Guidance at Jai Academy</p>
-            <div class="hero-img"><img src="123.JPG"> </img></div>
+            <div class="hero-img"><img src="m1.JPGc"> </ing></div>
             <button class="btn btn-primary" style="position: relative; z-index: 2;" onclick="showPage('courses')">Explore Courses</button>
         </div>
         <section class="container">
@@ -1261,17 +1261,23 @@
         <p>📞 7015084928 | 📧 hbalyan03@gmail.com | 📍 Sonipat, Haryana</p>
     </footer>
 
-    <script>
-        // Page Navigation
+   <script>
+        const whatsappNumber = '917015084928';
+
+        function openWhatsApp(message) {
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappUrl, '_blank');
+        }
+
         function showPage(pageId) {
             document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
             window.scrollTo(0, 0);
         }
 
-        // Course Modal
         function openCourseModal(title, duration, price, teacher, desc, timing, highlights) {
             document.getElementById('courseModalTitle').textContent = title;
+
             document.getElementById('courseModalBody').innerHTML = `
                 <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin-bottom: 1rem;">
                     <p><strong>Duration:</strong> ${duration}</p>
@@ -1284,10 +1290,10 @@
                 <h3>What You'll Learn</h3>
                 <p>${highlights}</p>
             `;
+
             document.getElementById('courseModal').style.display = 'block';
         }
 
-        // Teacher Modal
         function openTeacherModal(name, subject, imagePath, details) {
             document.getElementById('teacherModalTitle').textContent = name;
             document.getElementById('teacherModalSubject').textContent = subject;
@@ -1296,45 +1302,82 @@
             document.getElementById('teacherModal').style.display = 'block';
         }
 
-        // Student Modal
         function openStudentModal(name, imagePath, achievement, marks, details) {
             document.getElementById('studentModalTitle').textContent = name;
             document.getElementById('studentModalAchievement').textContent = achievement;
             document.getElementById('studentModalImage').src = imagePath;
+
             document.getElementById('studentModalBody').innerHTML = `
                 <p><strong>Marks Obtained:</strong> ${marks}</p>
                 <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0; line-height: 2;">
                     ${details}
                 </div>
             `;
+
             document.getElementById('studentModal').style.display = 'block';
         }
 
-        // FAQ Toggle
         function toggleFAQ(element) {
             element.parentElement.classList.toggle('active');
         }
 
-        // Form Handlers
         function handleContactForm(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon at the provided phone number.');
+
+            const fields = e.target.querySelectorAll('input, textarea');
+
+            const name = fields[0].value.trim();
+            const email = fields[1].value.trim();
+            const phone = fields[2].value.trim();
+            const subject = fields[3].value.trim();
+            const userMessage = fields[4].value.trim();
+
+            const message = `Hello Jai Academy,
+
+I want to contact you.
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Subject: ${subject}
+Message: ${userMessage}`;
+
+            openWhatsApp(message);
             e.target.reset();
         }
 
         function handleEnrollment(e) {
             e.preventDefault();
-            alert('Thank you for enrolling! We will contact you soon to confirm your enrollment and discuss batch details.');
+
+            const fields = e.target.querySelectorAll('input, select');
+
+            const name = fields[0].value.trim();
+            const email = fields[1].value.trim();
+            const phone = fields[2].value.trim();
+            const course = fields[3].options[fields[3].selectedIndex].text;
+
+            const message = `Hello Jai Academy,
+
+I want to enroll in a course.
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Course: ${course}
+
+Please contact me for batch details.`;
+
+            openWhatsApp(message);
+
             document.getElementById('enrollForm').style.display = 'none';
             e.target.reset();
         }
 
-        // Close modals on outside click
         window.onclick = function(e) {
             if (e.target.classList.contains('modal')) {
                 e.target.style.display = 'none';
             }
-        }
+        };
     </script>
 </body>
 </html>
