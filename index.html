@@ -1346,32 +1346,39 @@ Message: ${userMessage}`;
             e.target.reset();
         }
 
-        function handleEnrollment(e) {
-            e.preventDefault();
+     
+function handleEnrollment(e) {
+    e.preventDefault();
 
-            const fields = e.target.querySelectorAll('input, select');
+    const fields = e.target.querySelectorAll('input, select');
 
-            const name = fields[0].value.trim();
-            const email = fields[1].value.trim();
-            const phone = fields[2].value.trim();
-            const course = fields[3].options[fields[3].selectedIndex].text;
+    const name = fields[0].value.trim();
+    const email = fields[1].value.trim();
+    const phone = fields[2].value.trim();
+    const course = fields[3].options[fields[3].selectedIndex].text;
 
-            const message = `Hello Jai Academy,
+    const subject = `New Enrollment Request - ${course}`;
 
-I want to enroll in a course.
+    const body = `Hello Jai Academy,
+
+New enrollment request received.
 
 Name: ${name}
 Email: ${email}
 Phone: ${phone}
 Course: ${course}
 
-Please contact me for batch details.`;
+Please contact this student for batch details.`;
 
-            openWhatsApp(message);
+    const mailUrl = `mailto:himanshubalyan35@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
-            document.getElementById('enrollForm').style.display = 'none';
-            e.target.reset();
-        }
+    window.location.href = mailUrl;
+
+    document.getElementById('enrollForm').style.display = 'none';
+    e.target.reset();
+}
+
+        
 
         window.onclick = function(e) {
             if (e.target.classList.contains('modal')) {
