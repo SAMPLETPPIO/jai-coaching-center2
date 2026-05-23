@@ -28,7 +28,7 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             color: var(--text);
-              background-image: url('hero-bg.jpg');
+            background: var(--light);
             line-height: 1.6;
         }
 
@@ -77,6 +77,7 @@
             font-size: 0.95rem;
             transition: color 0.3s;
             position: relative;
+            cursor: pointer;
         }
 
         .nav-links a:hover {
@@ -130,7 +131,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(0, 102, 204, 0.75) 0%, rgba(255, 136, 0, 0.75) 100%), url('./hero-bg.jpg') center/cover;
+            background: linear-gradient(135deg, rgba(0, 102, 204, 0.6) 0%, rgba(255, 136, 0, 0.6) 100%), url('./123.JPG') center/cover;
             background-attachment: fixed;
             padding: 5rem 2rem;
             text-align: center;
@@ -159,7 +160,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             color: white;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.6);
             position: relative;
             z-index: 2;
         }
@@ -170,13 +171,13 @@
             margin-bottom: 2rem;
             position: relative;
             z-index: 2;
-            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
         }
 
         .hero-img {
             width: 300px;
             height: 200px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+               background-image: url('123.jpg');
             border-radius: 12px;
             margin: 2rem auto;
             display: flex;
@@ -227,17 +228,17 @@
         /* Cards Grid */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
         }
 
         .card {
             background: var(--white);
-            padding: 2rem;
             border-radius: 12px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
             border: 2px solid transparent;
+            overflow: hidden;
         }
 
         .card:hover {
@@ -248,14 +249,24 @@
 
         .card-image {
             width: 100%;
-            height: 200px;
+            height: 250px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 8px;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            margin-bottom: 1rem;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 0;
+        }
+
+        .card-content-wrapper {
+            padding: 2rem;
         }
 
         .card h3 {
@@ -325,6 +336,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0, 0, 0, 0.6);
+            overflow-y: auto;
             animation: fadeIn 0.3s;
         }
 
@@ -335,13 +347,14 @@
 
         .modal-content {
             background: var(--white);
-            margin: 5% auto;
-            padding: 2rem;
+            margin: 3% auto;
+            padding: 0;
             border-radius: 12px;
             width: 90%;
-            max-width: 700px;
+            max-width: 600px;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.3s;
+            overflow: hidden;
         }
 
         @keyframes slideUp {
@@ -355,32 +368,67 @@
             }
         }
 
+        .modal-image-section {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image-section img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .modal-close {
-            float: right;
+            position: absolute;
+            top: 15px;
+            right: 20px;
             font-size: 2rem;
             font-weight: bold;
-            color: var(--text);
+            color: white;
             cursor: pointer;
             transition: color 0.3s;
+            background: rgba(0, 0, 0, 0.3);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2001;
         }
 
         .modal-close:hover {
-            color: var(--primary);
+            background: rgba(0, 0, 0, 0.6);
         }
 
         .modal-header {
-            margin-bottom: 1.5rem;
+            padding: 2rem;
             border-bottom: 2px solid var(--border);
-            padding-bottom: 1rem;
+            position: relative;
         }
 
         .modal-header h2 {
             text-align: left;
             margin: 0;
             margin-bottom: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .modal-header p {
+            text-align: left;
+            margin: 0;
+            color: var(--primary);
+            font-weight: 600;
         }
 
         .modal-body {
+            padding: 2rem;
             line-height: 1.8;
             color: var(--text);
         }
@@ -388,18 +436,6 @@
         .modal-body p {
             text-align: left;
             margin-bottom: 1rem;
-        }
-
-        .modal-image {
-            width: 100%;
-            height: 250px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
         }
 
         /* FAQ */
@@ -533,11 +569,6 @@
             transform: translateY(-2px);
         }
 
-        .page-links a.active {
-            background: var(--primary);
-            color: white;
-        }
-
         /* Footer */
         footer {
             background: var(--dark);
@@ -565,7 +596,7 @@
             display: flex;
             gap: 1rem;
             margin-bottom: 1.5rem;
-            align-items: center;
+            align-items: flex-start;
         }
 
         .contact-item h3 {
@@ -598,6 +629,11 @@
             .page-links {
                 flex-direction: column;
             }
+
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
         }
     </style>
 </head>
@@ -627,8 +663,8 @@
         <div class="hero">
             <h1>Excel in Competitive Exams</h1>
             <p>Master Mathematics with Expert Guidance at Jai Academy</p>
-            <div class="hero-img">📚</div>
-            <button class="btn btn-primary" onclick="showPage('courses')">Explore Courses</button>
+            <div class="hero-img"><img src="m1.JPGc"> </ing></div>
+            <button class="btn btn-primary" style="position: relative; z-index: 2;" onclick="showPage('courses')">Explore Courses</button>
         </div>
         <section class="container">
             <h2>About Jai Academy</h2>
@@ -699,50 +735,66 @@
             <div class="grid">
                 <!-- Course 1: Math Mastery -->
                 <div class="card">
-                    <div class="card-image">📐</div>
-                    <h3>Mathematics Mastery</h3>
-                    <p class="card-content">Complete mathematical concepts and problem-solving techniques for competitive exams. Master algebra, geometry, and advanced problem-solving methods.</p>
-                    <div class="card-meta">
-                        <span>6 Months</span>
-                        <span>₹8,000</span>
+                    <div class="card-image">
+                        <img src="./m1.jpg" alt="Mathematics">
                     </div>
-                    <button class="btn btn-primary" onclick="openCourseModal('Mathematics Mastery', '6 months', '₹8,000', 'H. Balyan', 'Expert in quantitative aptitude', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Complete understanding of mathematical concepts, Advanced problem-solving techniques, 500+ practice questions, 20+ mock tests')">Know More</button>
+                    <div class="card-content-wrapper">
+                        <h3>Mathematics Mastery</h3>
+                        <p class="card-content">Complete mathematical concepts and problem-solving techniques for competitive exams. Master algebra, geometry, and advanced problem-solving methods.</p>
+                        <div class="card-meta">
+                            <span>6 Months</span>
+                            <span>₹8,000</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openCourseModal('Mathematics Mastery', '6 months', '₹8,000', 'H. Balyan', 'Expert in quantitative aptitude', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Complete understanding of mathematical concepts, Advanced problem-solving techniques, 500+ practice questions, 20+ mock tests')">Know More</button>
+                    </div>
                 </div>
 
-                <!-- Course 2: Science Essentials -->
+                <!-- Course 2: Physics -->
                 <div class="card">
-                    <div class="card-image">🔬</div>
-                    <h3>Physics Fundamentals</h3>
-                    <p class="card-content">Core physics concepts with practical applications. Understand mechanics, thermodynamics, and modern physics for competitive exams.</p>
-                    <div class="card-meta">
-                        <span>6 Months</span>
-                        <span>₹10,000</span>
+                    <div class="card-image">
+                        <img src="./mf.jpg" alt="Physics">
                     </div>
-                    <button class="btn btn-primary" onclick="openCourseModal('Physics Fundamentals', '6 months', '₹10,000', 'Expert Faculty', 'Specialized in physics teaching', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Classical mechanics mastery, Thermodynamics concepts, Modern physics understanding, Numerical problem-solving')">Know More</button>
+                    <div class="card-content-wrapper">
+                        <h3>Physics Fundamentals</h3>
+                        <p class="card-content">Core physics concepts with practical applications. Understand mechanics, thermodynamics, and modern physics for competitive exams.</p>
+                        <div class="card-meta">
+                            <span>6 Months</span>
+                            <span>₹10,000</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openCourseModal('Physics Fundamentals', '6 months', '₹10,000', 'Expert Faculty', 'Specialized in physics teaching', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Classical mechanics mastery, Thermodynamics concepts, Modern physics understanding, Numerical problem-solving')">Know More</button>
+                    </div>
                 </div>
 
                 <!-- Course 3: Chemistry -->
                 <div class="card">
-                    <div class="card-image">⚗️</div>
-                    <h3>Chemistry Mastery</h3>
-                    <p class="card-content">Organic, inorganic, and physical chemistry expertise. Master the principles and reactions essential for competitive success.</p>
-                    <div class="card-meta">
-                        <span>6 Months</span>
-                        <span>₹10,000</span>
+                    <div class="card-image">
+                        <img src="./c.jpg" alt="Chemistry">
                     </div>
-                    <button class="btn btn-primary" onclick="openCourseModal('Chemistry Mastery', '6 months', '₹10,000', 'Expert Faculty', 'Chemistry specialist', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Organic chemistry reactions, Inorganic compounds, Physical chemistry concepts, Equilibrium and redox reactions')">Know More</button>
+                    <div class="card-content-wrapper">
+                        <h3>Chemistry Mastery</h3>
+                        <p class="card-content">Organic, inorganic, and physical chemistry expertise. Master the principles and reactions essential for competitive success.</p>
+                        <div class="card-meta">
+                            <span>6 Months</span>
+                            <span>₹10,000</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openCourseModal('Chemistry Mastery', '6 months', '₹10,000', 'Expert Faculty', 'Chemistry specialist', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Organic chemistry reactions, Inorganic compounds, Physical chemistry concepts, Equilibrium and redox reactions')">Know More</button>
+                    </div>
                 </div>
 
                 <!-- Course 4: Biology -->
                 <div class="card">
-                    <div class="card-image">🧬</div>
-                    <h3>Biology Excellence</h3>
-                    <p class="card-content">Botany and zoology with exam-focused strategies. Understand biological processes and ace competitive biology exams.</p>
-                    <div class="card-meta">
-                        <span>6 Months</span>
-                        <span>₹10,000</span>
+                    <div class="card-image">
+                        <img src="./b.jpg" alt="Biology">
                     </div>
-                    <button class="btn btn-primary" onclick="openCourseModal('Biology Excellence', '6 months', '₹10,000', 'Expert Faculty', 'Biology specialist', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Cell biology and genetics, Plant and animal physiology, Ecology and evolution, Human body systems')">Know More</button>
+                    <div class="card-content-wrapper">
+                        <h3>Biology Excellence</h3>
+                        <p class="card-content">Botany and zoology with exam-focused strategies. Understand biological processes and ace competitive biology exams.</p>
+                        <div class="card-meta">
+                            <span>6 Months</span>
+                            <span>₹10,000</span>
+                        </div>
+                        <button class="btn btn-primary" onclick="openCourseModal('Biology Excellence', '6 months', '₹10,000', 'Expert Faculty', 'Biology specialist', 'Morning: 5:00 AM - 7:00 AM | Evening: 4:00 PM - 6:00 PM', 'Cell biology and genetics, Plant and animal physiology, Ecology and evolution, Human body systems')">Know More</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -766,20 +818,28 @@
             <div class="grid">
                 <!-- Teacher 1 -->
                 <div class="card">
-                    <div class="card-image">👨‍🏫</div>
-                    <h3>H. Balyan</h3>
-                    <p class="card-content"><strong>📐 Mathematics</strong></p>
-                    <p class="card-content">Expert in quantitative aptitude with 5+ years of dedicated teaching experience. H. Balyan specializes in problem-solving techniques and conceptual clarity.</p>
-                    <button class="btn btn-primary" onclick="openTeacherModal('H. Balyan', '📐 Mathematics', '👨‍🏫', 'B.Tech in Mathematics<br>M.Sc Advanced Mathematics<br><br>Experience: 5+ years<br>Specialization: Quantitative Aptitude<br>Achievements: 2000+ successful students<br>Teaching Style: Interactive, concept-based learning with practical problem-solving approach')">Know More</button>
+                    <div class="card-image">
+                        <img src="./t1.JPG" alt="H. Balyan">
+                    </div>
+                    <div class="card-content-wrapper">
+                        <h3>H. Balyan</h3>
+                        <p class="card-content"><strong>📐 Mathematics</strong></p>
+                        <p class="card-content">Expert in quantitative aptitude with 5+ years of dedicated teaching experience. Specializes in problem-solving techniques and conceptual clarity.</p>
+                        <button class="btn btn-primary" onclick="openTeacherModal('H. Balyan', '📐 Mathematics', './t1.JPG', 'B.Tech in Mathematics<br>M.Sc Advanced Mathematics<br><br>Experience: 5+ years<br>Specialization: Quantitative Aptitude<br>Achievements: 2000+ successful students<br>Teaching Style: Interactive, concept-based learning with practical problem-solving approach')">Know More</button>
+                    </div>
                 </div>
 
                 <!-- Teacher 2 -->
                 <div class="card">
-                    <div class="card-image">👩‍🏫</div>
-                    <h3>Neha Sharma</h3>
-                    <p class="card-content"><strong>🧠 Reasoning & Logic</strong></p>
-                    <p class="card-content">Specializes in logical reasoning and analytical skills. Neha brings 3+ years of expertise in making complex concepts simple and understandable.</p>
-                    <button class="btn btn-primary" onclick="openTeacherModal('Neha Sharma', '🧠 Reasoning & Logic', '👩‍🏫', 'M.Sc Physics from IIT Delhi<br>B.Sc Mathematics Honors<br><br>Experience: 3+ years<br>Specialization: Logical Reasoning, Puzzles<br>Achievements: 1500+ successful students<br>Teaching Style: Engaging, innovative techniques with focus on time management')">Know More</button>
+                    <div class="card-image">
+                        <img src="./t2.JPG" alt="Neha Sharma">
+                    </div>
+                    <div class="card-content-wrapper">
+                        <h3>Neha Sharma</h3>
+                        <p class="card-content"><strong>🧠 Reasoning & Logic</strong></p>
+                        <p class="card-content">Specializes in logical reasoning and analytical skills. Brings 3+ years of expertise in making complex concepts simple and understandable.</p>
+                        <button class="btn btn-primary" onclick="openTeacherModal('Neha Sharma', '🧠 Reasoning & Logic', './t2.JPG', 'M.Sc Physics from IIT Delhi<br>B.Sc Mathematics Honors<br><br>Experience: 3+ years<br>Specialization: Logical Reasoning, Puzzles<br>Achievements: 1500+ successful students<br>Teaching Style: Engaging, innovative techniques with focus on time management')">Know More</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -803,47 +863,67 @@
             <div class="grid">
                 <!-- Student 1 -->
                 <div class="card">
-                    <div class="card-image">🏆</div>
-                    <h3>Rohan Kumar</h3>
-                    <p class="card-content"><strong>SSC CGL - AIR 45</strong></p>
-                    <p class="card-content">"Amazing teaching methods and personalized attention from the faculty. The structured approach and regular mock tests helped me achieve this rank!"</p>
-                    <button class="btn btn-primary" onclick="openStudentModal('Rohan Kumar', '🏆', 'SSC CGL - AIR 45', '98/100', '👨‍🎓', 'Daily Study Routine:<br>5:00 AM - 7:00 AM: Classes<br>7:00 AM - 9:00 AM: Self-study & practice<br>4:00 PM - 6:00 PM: Classes<br>6:00 PM - 8:00 PM: Mock tests & revision<br><br>Parents Support:<br>Continuous encouragement and support throughout the preparation journey. His parents ensured a stress-free environment at home.<br><br>Success Tips:<br>Regular mock tests were the key. Taking 20+ full-length tests helped me improve speed and accuracy significantly.')">Know More</button>
+                    <div class="card-image">
+                        <img src="./s1.JPG" alt="Rohan Kumar">
+                    </div>
+                    <div class="card-content-wrapper">
+                        <h3>Rohan Kumar</h3>
+                        <p class="card-content"><strong>SSC CGL - AIR 45</strong></p>
+                        <p class="card-content">"Amazing teaching methods and personalized attention from the faculty!"</p>
+                        <button class="btn btn-primary" onclick="openStudentModal('Rohan Kumar', './s1.JPG', 'SSC CGL - AIR 45', '98/100', 'Daily Study Routine:<br>5:00-7:00 AM: Classes<br>7:00-9:00 AM: Self-study & practice<br>4:00-6:00 PM: Classes<br>6:00-8:00 PM: Mock tests & revision<br><br>Parents Support:<br>Continuous encouragement and support throughout preparation. Parents ensured stress-free home environment.<br><br>Success Tips:<br>Regular mock tests were key. 20+ full-length tests improved speed and accuracy significantly.')">Know More</button>
+                    </div>
                 </div>
 
                 <!-- Student 2 -->
                 <div class="card">
-                    <div class="card-image">⭐</div>
-                    <h3>Priya Singh</h3>
-                    <p class="card-content"><strong>SBI PO - Selected</strong></p>
-                    <p class="card-content">"Worth every penny! The faculty's dedication and the systematic approach made my preparation smooth and effective. Highly recommended!"</p>
-                    <button class="btn btn-primary" onclick="openStudentModal('Priya Singh', '⭐', 'SBI PO - Selected', '96/100', '👩‍🎓', 'Daily Study Routine:<br>5:30 AM - 7:00 AM: Concept building<br>7:00 AM - 8:30 AM: Practice questions<br>4:00 PM - 6:00 PM: Advanced topics<br>6:00 PM - 8:00 PM: Mock tests & analysis<br><br>Parents Support:<br>Her parents provided emotional support and maintained a positive home environment. Regular motivation sessions kept her focused.<br><br>Success Tips:<br>Consistency was my strength. I never missed a single class and maintained a study journal to track my progress. Regular feedback from teachers helped me improve weak areas.')">Know More</button>
+                    <div class="card-image">
+                        <img src="./s2.JPG" alt="Priya Singh">
+                    </div>
+                    <div class="card-content-wrapper">
+                        <h3>Priya Singh</h3>
+                        <p class="card-content"><strong>SBI PO - Selected</strong></p>
+                        <p class="card-content">"Faculty's dedication made preparation smooth and effective!"</p>
+                        <button class="btn btn-primary" onclick="openStudentModal('Priya Singh', './s2.JPG', 'SBI PO - Selected', '96/100', 'Daily Study Routine:<br>5:30-7:00 AM: Concept building<br>7:00-8:30 AM: Practice questions<br>4:00-6:00 PM: Advanced topics<br>6:00-8:00 PM: Mock tests & analysis<br><br>Parents Support:<br>Emotional support and positive home environment. Regular motivation sessions kept focus.<br><br>Success Tips:<br>Consistency was key. Never missed class, maintained study journal. Regular feedback helped improve weak areas.')">Know More</button>
+                    </div>
                 </div>
 
                 <!-- Student 3 -->
                 <div class="card">
-                    <div class="card-image">🎯</div>
-                    <h3>Amit Patel</h3>
-                    <p class="card-content"><strong>Bank Clerk - Selected</strong></p>
-                    <p class="card-content">"The personalized approach and regular feedback sessions made all the difference. I improved from average to excellent in just 4 months!"</p>
-                    <button class="btn btn-primary" onclick="openStudentModal('Amit Patel', '🎯', 'Bank Clerk - Selected', '94/100', '👨‍🎓', 'Daily Study Routine:<br>Early morning: 5:00 AM - 6:30 AM: Weak area practice<br>Evening: 4:00 PM - 6:00 PM: Regular classes<br>Night: 6:00 PM - 7:30 PM: Mock tests & revision<br><br>Parents Support:<br>Family support was crucial. His parents ensured minimal distractions and provided healthy meals for sustained focus.<br><br>Success Tips:<br>I focused on understanding concepts rather than memorizing. The one-on-one doubt sessions with teachers were extremely helpful. Practicing previous year papers strengthened my confidence.')">Know More</button>
+                    <div class="card-image">
+                        <img src="./s3.JPG" alt="Amit Patel">
+                    </div>
+                    <div class="card-content-wrapper">
+                        <h3>Amit Patel</h3>
+                        <p class="card-content"><strong>Bank Clerk - Selected</strong></p>
+                        <p class="card-content">"Improved from average to excellent in just 4 months!"</p>
+                        <button class="btn btn-primary" onclick="openStudentModal('Amit Patel', './s3.JPG', 'Bank Clerk - Selected', '94/100', 'Daily Study Routine:<br>5:00-6:30 AM: Weak area practice<br>4:00-6:00 PM: Regular classes<br>6:00-7:30 PM: Mock tests & revision<br><br>Parents Support:<br>Family support crucial. Parents ensured minimal distractions and healthy meals for sustained focus.<br><br>Success Tips:<br>Focused on understanding concepts. One-on-one doubt sessions helpful. Previous year papers strengthened confidence.')">Know More</button>
+                    </div>
                 </div>
 
                 <!-- Student 4 -->
                 <div class="card">
-                    <div class="card-image">💎</div>
-                    <h3>Anjali Verma</h3>
-                    <p class="card-content"><strong>Railway Exam - AIR 78</strong></p>
-                    <p class="card-content">"Excellent faculty who understand student psychology. The supportive environment and structured syllabus made my journey smooth and rewarding."</p>
-                    <button class="btn btn-primary" onclick="openStudentModal('Anjali Verma', '💎', 'Railway Exam - AIR 78', '92/100', '👩‍🎓', 'Daily Study Routine:<br>5:30 AM - 7:00 AM: New concepts & theory<br>7:30 AM - 9:00 AM: Problem-solving practice<br>4:00 PM - 6:00 PM: Subject-wise focus<br>6:00 PM - 8:00 PM: Full-length tests & analysis<br><br>Parents Support:<br>Her parents were very supportive and created a healthy study environment. Regular motivation and appreciation boosted her confidence.<br><br>Success Tips:<br>I maintained a success journal noting daily achievements. Group discussions with batch mates helped clarify concepts. Regular interaction with faculty provided timely guidance and corrections.')">Know More</button>
+                    <div class="card-image">
+                        <img src="./s4.JPG" alt="Anjali Verma">
+                    </div>
+                    <div class="card-content-wrapper">
+                        <h3>Anjali Verma</h3>
+                        <p class="card-content"><strong>Railway Exam - AIR 78</strong></p>
+                        <p class="card-content">"Structured syllabus made my journey smooth!"</p>
+                        <button class="btn btn-primary" onclick="openStudentModal('Anjali Verma', './s4.JPG', 'Railway Exam - AIR 78', '92/100', 'Daily Study Routine:<br>5:30-7:00 AM: New concepts & theory<br>7:30-9:00 AM: Problem-solving practice<br>4:00-6:00 PM: Subject-wise focus<br>6:00-8:00 PM: Full-length tests & analysis<br><br>Parents Support:<br>Very supportive, created healthy study environment. Regular motivation boosted confidence.<br><br>Success Tips:<br>Maintained success journal. Group discussions clarified concepts. Regular faculty interaction provided timely guidance.')">Know More</button>
+                    </div>
                 </div>
 
                 <!-- Student 5 -->
                 <div class="card">
-                    <div class="card-image">🌟</div>
-                    <h3>Vikram Singh</h3>
-                    <p class="card-content"><strong>SSC CGL - AIR 62</strong></p>
-                    <p class="card-content">"The methodical approach and regular assessment tools helped me identify and overcome my weaknesses. A truly transformative experience!"</p>
-                    <button class="btn btn-primary" onclick="openStudentModal('Vikram Singh', '🌟', 'SSC CGL - AIR 62', '90/100', '👨‍🎓', 'Daily Study Routine:<br>5:00 AM - 6:30 AM: Speed building exercises<br>7:00 AM - 8:30 AM: Accuracy practice<br>4:00 PM - 6:00 PM: Regular batch classes<br>6:00 PM - 8:30 PM: Detailed mock test analysis<br><br>Parents Support:<br>Supportive family environment with consistent encouragement. His parents celebrated small achievements which kept motivation high.<br><br>Success Tips:<br>I followed the 80/20 rule - focusing on high-weightage topics first. Regular revision schedules ensured nothing was forgotten. The performance tracking system helped me set realistic goals.')">Know More</button>
+                    <div class="card-image">
+                        <img src="./s5.JPG" alt="Vikram Singh">
+                    </div>
+                    <div class="card-content-wrapper">
+                        <h3>Vikram Singh</h3>
+                        <p class="card-content"><strong>SSC CGL - AIR 62</strong></p>
+                        <p class="card-content">"Assessment tools helped overcome weaknesses!"</p>
+                        <button class="btn btn-primary" onclick="openStudentModal('Vikram Singh', './s5.JPG', 'SSC CGL - AIR 62', '90/100', 'Daily Study Routine:<br>5:00-6:30 AM: Speed building exercises<br>7:00-8:30 AM: Accuracy practice<br>4:00-6:00 PM: Regular batch classes<br>6:00-8:30 PM: Detailed mock test analysis<br><br>Parents Support:<br>Supportive family environment with consistent encouragement. Parents celebrated small achievements.<br><br>Success Tips:<br>Followed 80/20 rule - high-weightage topics first. Regular revision ensured nothing forgotten. Performance tracking helped set realistic goals.')">Know More</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -866,55 +946,75 @@
             
             <div class="grid">
                 <div class="card">
-                    <h3>📐 Mathematics</h3>
-                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
-                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
-                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                        <p><strong>Teacher:</strong> H. Balyan</p>
-                        <p><strong>Time Slots:</strong></p>
-                        <p>• Morning: 5:00 AM - 7:00 AM</p>
-                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    <div class="card-image">
+                        <img src="./m1.jpg" alt="Mathematics">
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    <div class="card-content-wrapper">
+                        <h3>Mathematics</h3>
+                        <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                        <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                        <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                            <p><strong>Teacher:</strong> H. Balyan</p>
+                            <p><strong>Time Slots:</strong></p>
+                            <p>• Morning: 5:00 AM - 7:00 AM</p>
+                            <p>• Evening: 4:00 PM - 6:00 PM</p>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>🧪 Physics</h3>
-                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
-                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
-                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                        <p><strong>Teacher:</strong> Expert Faculty</p>
-                        <p><strong>Time Slots:</strong></p>
-                        <p>• Morning: 5:00 AM - 7:00 AM</p>
-                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    <div class="card-image">
+                        <img src="./mf.jpg" alt="Physics">
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    <div class="card-content-wrapper">
+                        <h3>Physics</h3>
+                        <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                        <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                        <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                            <p><strong>Teacher:</strong> Expert Faculty</p>
+                            <p><strong>Time Slots:</strong></p>
+                            <p>• Morning: 5:00 AM - 7:00 AM</p>
+                            <p>• Evening: 4:00 PM - 6:00 PM</p>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>⚗️ Chemistry</h3>
-                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
-                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
-                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                        <p><strong>Teacher:</strong> Expert Faculty</p>
-                        <p><strong>Time Slots:</strong></p>
-                        <p>• Morning: 5:00 AM - 7:00 AM</p>
-                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    <div class="card-image">
+                        <img src="./c.jpg" alt="Chemistry">
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    <div class="card-content-wrapper">
+                        <h3>Chemistry</h3>
+                        <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                        <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                        <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                            <p><strong>Teacher:</strong> Expert Faculty</p>
+                            <p><strong>Time Slots:</strong></p>
+                            <p>• Morning: 5:00 AM - 7:00 AM</p>
+                            <p>• Evening: 4:00 PM - 6:00 PM</p>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h3>🧬 Biology</h3>
-                    <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
-                    <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
-                    <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
-                        <p><strong>Teacher:</strong> Expert Faculty</p>
-                        <p><strong>Time Slots:</strong></p>
-                        <p>• Morning: 5:00 AM - 7:00 AM</p>
-                        <p>• Evening: 4:00 PM - 6:00 PM</p>
+                    <div class="card-image">
+                        <img src="./b.jpg" alt="Biology">
                     </div>
-                    <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    <div class="card-content-wrapper">
+                        <h3>Biology</h3>
+                        <div style="font-size: 2.5rem; color: var(--secondary); font-weight: 800; margin: 1rem 0;">₹10,000</div>
+                        <p style="margin-bottom: 1rem;"><strong>6 Months Course</strong></p>
+                        <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0;">
+                            <p><strong>Teacher:</strong> Expert Faculty</p>
+                            <p><strong>Time Slots:</strong></p>
+                            <p>• Morning: 5:00 AM - 7:00 AM</p>
+                            <p>• Evening: 4:00 PM - 6:00 PM</p>
+                        </div>
+                        <button class="btn btn-primary" style="width: 100%;" onclick="document.getElementById('enrollForm').style.display='block'">Enroll Now</button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -942,7 +1042,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Our standard courses are 6 months long with 3-4 classes per week. Each class is 2 hours long. We also offer accelerated 3-month intensive programs for advanced students. The schedule is flexible with both morning (5:00-7:00 AM) and evening (4:00-6:00 PM) batches available.</p>
+                        <p>Our standard courses are 6 months long with 3-4 classes per week. Each class is 2 hours long. We also offer accelerated 3-month intensive programs. The schedule is flexible with morning (5:00-7:00 AM) and evening (4:00-6:00 PM) batches.</p>
                     </div>
                 </div>
 
@@ -952,7 +1052,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Yes, absolutely! You can join anytime during the course. We provide recorded lectures for all the topics covered before your joining date. Additionally, we conduct special one-on-one doubt-solving sessions to help you catch up with the batch quickly.</p>
+                        <p>Yes, absolutely! You can join anytime during the course. We provide recorded lectures for all topics covered before your joining date. Additionally, we conduct special one-on-one doubt-solving sessions to help you catch up with the batch quickly.</p>
                     </div>
                 </div>
 
@@ -962,7 +1062,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>All our classes are recorded and uploaded to our online portal within 24 hours. You can access these recordings anytime and watch them at your own pace. We also conduct additional revision sessions for students who need extra help with specific topics.</p>
+                        <p>All our classes are recorded and uploaded to our online portal within 24 hours. You can access these recordings anytime and watch at your own pace. We also conduct additional revision sessions for students who need extra help.</p>
                     </div>
                 </div>
 
@@ -972,7 +1072,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>Currently, we offer offline classes in Sonipat for better interaction and practical problem-solving. However, we're expanding our services and plan to introduce live online classes very soon. Students can register for our mailing list to get updates about online classes when they launch.</p>
+                        <p>Currently, we offer offline classes in Sonipat. However, we're expanding and plan to introduce live online classes soon. Students can contact us for updates about online classes.</p>
                     </div>
                 </div>
 
@@ -982,7 +1082,7 @@
                         <span class="faq-toggle">▼</span>
                     </div>
                     <div class="faq-answer">
-                        <p>We offer a 10% refund if you withdraw within 7 days of enrollment, provided you haven't attended more than 1 class. After 7 days, fees are non-refundable but can be transferred to family members or credited toward future courses. For specific cases, please contact our management directly.</p>
+                        <p>We offer 10% refund if you withdraw within 7 days of enrollment, provided you haven't attended more than 1 class. After 7 days, fees are non-refundable but can be transferred to family members. For specific cases, contact our management.</p>
                     </div>
                 </div>
             </div>
@@ -1089,11 +1189,13 @@
     <!-- Teacher Modal -->
     <div id="teacherModal" class="modal">
         <div class="modal-content">
+            <div class="modal-image-section">
+                <img id="teacherModalImage" src="">
+            </div>
             <span class="modal-close" onclick="document.getElementById('teacherModal').style.display='none'">&times;</span>
-            <div class="modal-image" id="teacherModalImage"></div>
             <div class="modal-header">
                 <h2 id="teacherModalTitle"></h2>
-                <p id="teacherModalSubject" style="margin: 0;"></p>
+                <p id="teacherModalSubject"></p>
             </div>
             <div class="modal-body" id="teacherModalBody"></div>
         </div>
@@ -1102,11 +1204,13 @@
     <!-- Student Modal -->
     <div id="studentModal" class="modal">
         <div class="modal-content">
+            <div class="modal-image-section">
+                <img id="studentModalImage" src="">
+            </div>
             <span class="modal-close" onclick="document.getElementById('studentModal').style.display='none'">&times;</span>
-            <div class="modal-image" id="studentModalImage"></div>
             <div class="modal-header">
                 <h2 id="studentModalTitle"></h2>
-                <p id="studentModalAchievement" style="margin: 0; color: var(--secondary); font-weight: 600;"></p>
+                <p id="studentModalAchievement"></p>
             </div>
             <div class="modal-body" id="studentModalBody"></div>
         </div>
@@ -1119,31 +1223,33 @@
             <div class="modal-header">
                 <h2>Enroll Now</h2>
             </div>
-            <form onsubmit="handleEnrollment(event)" class="contact-form">
-                <div class="form-group">
-                    <label>Full Name *</label>
-                    <input type="text" required placeholder="Your full name">
-                </div>
-                <div class="form-group">
-                    <label>Email *</label>
-                    <input type="email" required placeholder="your@email.com">
-                </div>
-                <div class="form-group">
-                    <label>Phone *</label>
-                    <input type="tel" required placeholder="10-digit mobile number">
-                </div>
-                <div class="form-group">
-                    <label>Select Course *</label>
-                    <select required style="padding: 0.8rem; border: 2px solid var(--border); border-radius: 6px; font-family: inherit;">
-                        <option value="">-- Select a course --</option>
-                        <option value="math">Mathematics Mastery (₹10,000)</option>
-                        <option value="physics">Physics Fundamentals (₹10,000)</option>
-                        <option value="chemistry">Chemistry Mastery (₹10,000)</option>
-                        <option value="biology">Biology Excellence (₹10,000)</option>
-                    </select>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Complete Enrollment</button>
-            </form>
+            <div class="modal-body">
+                <form onsubmit="handleEnrollment(event)" class="contact-form">
+                    <div class="form-group">
+                        <label>Full Name *</label>
+                        <input type="text" required placeholder="Your full name">
+                    </div>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone *</label>
+                        <input type="tel" required placeholder="10-digit mobile number">
+                    </div>
+                    <div class="form-group">
+                        <label>Select Course *</label>
+                        <select required style="padding: 0.8rem; border: 2px solid var(--border); border-radius: 6px; font-family: inherit;">
+                            <option value="">-- Select a course --</option>
+                            <option value="math">Mathematics Mastery (₹10,000)</option>
+                            <option value="physics">Physics Fundamentals (₹10,000)</option>
+                            <option value="chemistry">Chemistry Mastery (₹10,000)</option>
+                            <option value="biology">Biology Excellence (₹10,000)</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Complete Enrollment</button>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -1182,19 +1288,19 @@
         }
 
         // Teacher Modal
-        function openTeacherModal(name, subject, emoji, details) {
+        function openTeacherModal(name, subject, imagePath, details) {
             document.getElementById('teacherModalTitle').textContent = name;
             document.getElementById('teacherModalSubject').textContent = subject;
-            document.getElementById('teacherModalImage').textContent = emoji;
+            document.getElementById('teacherModalImage').src = imagePath;
             document.getElementById('teacherModalBody').innerHTML = `<p>${details}</p>`;
             document.getElementById('teacherModal').style.display = 'block';
         }
 
         // Student Modal
-        function openStudentModal(name, emoji, achievement, marks, studentEmoji, details) {
+        function openStudentModal(name, imagePath, achievement, marks, details) {
             document.getElementById('studentModalTitle').textContent = name;
             document.getElementById('studentModalAchievement').textContent = achievement;
-            document.getElementById('studentModalImage').innerHTML = `${emoji} <br> ${studentEmoji}`;
+            document.getElementById('studentModalImage').src = imagePath;
             document.getElementById('studentModalBody').innerHTML = `
                 <p><strong>Marks Obtained:</strong> ${marks}</p>
                 <div style="background: var(--light); padding: 1rem; border-radius: 8px; margin: 1rem 0; line-height: 2;">
